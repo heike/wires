@@ -14,3 +14,5 @@ Authors@R: c(
            comment = c(ORCID = "https://orcid.org/0000-0001-6216-5183")),
     person("Yuhang", "Lin", email="yhlin@iastate.edu", role = "aut")
   )
+URL: https://github.com/heike/wires
+BugReports: https://github.com/heike/wires/issues
