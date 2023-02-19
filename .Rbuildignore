@@ -4,3 +4,4 @@
 ^stuff$
 ^LICENSE\.md$
 ^\.github$
+^data-raw$

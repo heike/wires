@@ -11,8 +11,8 @@
 #' @export
 #' @examples
 #' library(x3ptools)
-#' x3p <- x3p_read("~/Documents/CSAFE/Wirecutter/data/Aluminum Wires renamed/T1AW-LI-R4-B07.x3p")
-#' bounds <- x3p_boundary_points(x3p, 10)
+#' x3p <- x3p_read(system.file("T1AW-LI-R4.x3p", package="wires"))
+#' bounds <- x3p_boundary_points(x3p, 2)
 #'
 #' library(ggplot2)
 #' library(dplyr)

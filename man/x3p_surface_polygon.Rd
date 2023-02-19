@@ -2,40 +2,31 @@
 % Please edit documentation in R/x3p_surface_polygon.R
 \name{x3p_surface_polygon}
 \alias{x3p_surface_polygon}
-\title{Identify the inside surface area of a set of points}
+\title{Add a polygon of the scan shape as mask}
 \usage{
-x3p_surface_polygon(x, y, concavity, center = NULL)
+x3p_surface_polygon(x3p, colour = "red", center = NULL, concavity = 1.5)
 }
 \arguments{
-\item{x}{numeric vector of x positions}
+\item{x3p}{x3p file}
 
-\item{y}{numeric vector of y positions}
+\item{colour}{colour for the polygon}
 
-\item{concavity}{strictly positive parameter. Smaller values approach the
-inside of the boundary
-more closely. Large values concentrate on the inner center of the area}
+\item{center}{point on the center of the scan. If NULL, a center will be
+derived from the boundary points}
 
-\item{center}{numeric vector of length 2, consisting of (x,y) coordinate for
-centering x and y values.
-If center is NULL, the half ranges of x and y are used.}
+\item{concavity}{strictly positive value used in `concaveman::concaveman`}
 }
 \value{
-dataframe of x and y positions describing the inside of the area
-described by the input x and y, variable id describes the order of the points
+x3p object with mask
 }
 \description{
-Identify the inside surface area of a set of points
+Add a polygon of the scan shape as mask
 }
 \examples{
-library(x3ptools)
-x3p <- x3p_read("~/Documents/CSAFE/Wirecutter/data/Aluminum Wires renamed/T1AW-LI-R4-B07.x3p")
-bounds <- x3p_boundary_points(x3p, 10)
-polygon <- x3p_surface_polygon(bounds$x, bounds$y, 1)
-
-library(ggplot2)
-library(dplyr)
-bounds \%>\%
-ggplot(aes(x = x, y = y)) + geom_point() +
-  geom_polygon(data = polygon)
-
+if (interactive()) {
+  library(x3ptools)
+  x3p <- x3p_read(system.file("T1AW-LI-R4.x3p", package="wires"))
+  x3p <- x3p \%>\% x3p_surface_polygon()
+  x3p_image(x3p, size = dim(x3p$surface.matrix), zoom=.6)
+}
 }
