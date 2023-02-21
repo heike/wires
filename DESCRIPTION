@@ -23,6 +23,7 @@ Imports:
   png
 Suggests:
   ggplot2
-URL: https://github.com/heike/wires
+URL: https://github.com/heike/wires,
+    https://heike.github.io/wires/
 BugReports: https://github.com/heike/wires/issues
 RoxygenNote: 7.2.3
