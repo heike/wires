@@ -4,12 +4,23 @@
 \alias{x3p_surface_polygon}
 \title{Add a polygon of the scan shape as mask}
 \usage{
-x3p_surface_polygon(x3p, colour = "red", center = NULL, concavity = 1.5)
+x3p_surface_polygon(
+  x3p,
+  colour = "red",
+  sample = 10,
+  center = NULL,
+  concavity = 1.5
+)
 }
 \arguments{
 \item{x3p}{x3p file}
 
 \item{colour}{colour for the polygon}
+
+\item{sample}{strictly positive integer value specifying the amount of
+downsampling to be used (see `x3p_sample`) to calculate the boundary points
+of the polygon. Larger values of `sample` will result in faster response times
+but results in less accurate polygons.}
 
 \item{center}{point on the center of the scan. If NULL, a center will be
 derived from the boundary points}
@@ -26,7 +37,7 @@ Add a polygon of the scan shape as mask
 if (interactive()) {
   library(x3ptools)
   x3p <- x3p_read(system.file("T1AW-LI-R4.x3p", package="wires"))
-  x3p <- x3p \%>\% x3p_surface_polygon()
+  x3p <- x3p \%>\% x3p_surface_polygon(sample=1)
   x3p_image(x3p, size = dim(x3p$surface.matrix), zoom=.6)
 }
 }
